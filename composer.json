@@ -5,6 +5,13 @@
 	"type": "project",
 	"license": "MIT",
 	"minimum-stability": "stable",
+	"repositories":
+	[
+		{
+			"type": "vcs",
+			"url": "https://github.com/rdeanar/wakatime-php-api"
+		}
+	],
 	"require": {
 		"php": ">=5.4.0",
 		"yiisoft/yii2": "2.0.9",
@@ -13,7 +20,7 @@
 		"yiisoft/yii2-swiftmailer": "~2.0.0",
 		"vlucas/phpdotenv": "1.0.*",
 		"codemix/yii2-streamlog": "0.0.1",
-		"mabasic/wakatime-php-api": "^2.0",
+		"mabasic/wakatime-php-api": "dev-master",
 		"schmunk42/yii2-giiant": "@dev"
 	},
 	"require-dev": {

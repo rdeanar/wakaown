@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "04c5072d7b291c71d803a2010955d279",
-    "content-hash": "05faf2dbe70591045f0595df5a991481",
+    "hash": "fbb3aac2c56b0d43f873008cd573be63",
+    "content-hash": "a835fc9e54d3070ae0ee5d2205bf271a",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -792,16 +792,16 @@
         },
         {
             "name": "mabasic/wakatime-php-api",
-            "version": "2.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/mabasic/wakatime-php-api.git",
-                "reference": "f17342c23a26fe87836392cf4988ed635d27681d"
+                "url": "https://github.com/rdeanar/wakatime-php-api.git",
+                "reference": "5d04f9af08d48e337754f5b303ceb608058dd91e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mabasic/wakatime-php-api/zipball/f17342c23a26fe87836392cf4988ed635d27681d",
-                "reference": "f17342c23a26fe87836392cf4988ed635d27681d",
+                "url": "https://api.github.com/repos/rdeanar/wakatime-php-api/zipball/5d04f9af08d48e337754f5b303ceb608058dd91e",
+                "reference": "5d04f9af08d48e337754f5b303ceb608058dd91e",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +818,6 @@
                     "Mabasic\\WakaTime\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -834,7 +833,10 @@
                 "time tracking",
                 "wakatime"
             ],
-            "time": "2016-01-22 17:08:05"
+            "support": {
+                "source": "https://github.com/rdeanar/wakatime-php-api/tree/master"
+            },
+            "time": "2016-08-04 22:01:04"
         },
         {
             "name": "mikehaertl/php-shellcommand",
@@ -2083,6 +2085,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "mabasic/wakatime-php-api": 20,
         "schmunk42/yii2-giiant": 20
     },
     "prefer-stable": false,
