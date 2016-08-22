@@ -7,44 +7,90 @@
  */
 
 /**
+ * @var \yii\web\View $this
  * @var array $result
+ * @var array $projects
+ * @var array $projects_array
+ * @var array $time_by_project
+ * @var array $logged_time_data
  */
 
 ?>
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-    google.charts.load('current', {'packages': ['corechart']});
-    google.charts.setOnLoadCallback(drawVisualization);
+<script>
+    //    window.time_by_day_by_project = <?//=json_encode($result)?>//;
+    window.w = {
+        projects: <?=json_encode($projects_array)?>,
+        time_by_project: <?=json_encode($time_by_project)?>,
+        logged_time_data: <?=json_encode(array_values($logged_time_data))?>,
+    };
+    window.WakaTimeProjectColors = [
 
+        "#3581ba",
 
-    function drawVisualization() {
-        // Some raw data (not necessarily accurate)
-        var data = google.visualization.arrayToDataTable(
-            <?=json_encode($result)?>
-            /*[
-             ['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-             ['2004/05',  165,      938,         522,             998,           450,      614.6],
-             ['2005/06',  0,      1120,        599,             1268,          288,      682],
-             ['2006/07',  157,      1167,        587,             807,           397,      623],
-             ['2007/08',  139,      1110,        615,             968,           215,      609.4],
-             ['2008/09',  136,      691,         629,             1026,          366,      569.6]
-             ]*/);
+        "#2ca02c",
 
-        var options = {
-            title: 'Monthly Coffee Production by Country',
-            vAxis: {title: 'Cups'},
-            hAxis: {title: 'Month'},
-            seriesType: 'bars'
-//            ,series: {5: {type: 'line'}}
-            , isStacked: true
-        };
+        "#dc9658",
 
-        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-    }
+        "#d62728",
+
+        "#9467bd",
+
+        "#8c564b",
+
+        "#aec7e8",
+
+        "#e377c2",
+
+        "#f7b6d2",
+
+        "#7f7f7f",
+
+        "#c7c7c7",
+
+        "#bcbd22",
+
+        "#dbdb8d",
+
+        "#17becf",
+
+        "#9edae5",
+
+        "#ffbb78",
+
+        "#98df8a",
+
+        "#ff9896",
+
+        "#c5b0d5",
+
+        "#c49c94",
+
+    ];
 </script>
 
+<div class="chart-box">
+    <div id="coding-activity">
+        <div class="graph"></div>
+    </div>
+</div>
 
-<div id="chart_div" style="width: 900px; height: 500px;"></div>
 
+<script id="projects-tooltip-template" type="x-tmpl-mustache">
+    <table class="c3-tooltip">
+      <tr>
+        <th colspan="2">{{header}}</th>
+      </tr>
+      <tr>
+        <td class="name"><span style="background-color:{{color}}"></span><b>Total</b></td>
+        <td class="value">{{total.formatted}}</td>
+      </tr>
+      {{#projects}}
+        <tr>
+          <td class="name"><span style="background-color:{{color}}"></span>{{project}}</td>
+          <td class="value">{{formatted}}</td>
+        </tr>
+      {{/projects}}
+    </table>
+
+</script>

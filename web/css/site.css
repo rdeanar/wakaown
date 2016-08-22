@@ -89,3 +89,26 @@ a.desc:after {
 	padding: 10px 20px;
 	margin: 0 0 15px 0;
 }
+
+/* Wakaown */
+
+.chart-box {
+	background: #2d353c;
+	background-color: #2d353c;
+	color: #8a8e91;
+	padding: 15px;
+	border-radius: 3px;
+}
+
+.chart-box .graph .c3-ygrid {
+	stroke-dasharray: none;
+	opacity: 0.2;
+}
+
+.chart-box .graph text {
+	fill: #8a8e91;
+}
+
+#coding-activity {
+	margin-top: 70px;
+}

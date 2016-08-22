@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\DateHelper;
 use app\models\Duration;
 use app\models\Heartbeat;
 use Yii;
@@ -32,8 +33,15 @@ class WakaController extends Controller
     public function actionChart()
     {
 
+        // TODO add timezone offset
+        // (new \DateTime($date, new \DateTimeZone(getenv('TIMEZONE'))))->getOffset()
+
         $models = Duration::find()
             ->select([new Expression('FROM_UNIXTIME(`time` + 3600*3, \'%Y-%m-%d\') as day'), 'round(sum(duration)) as duration', 'project'])
+
+//            ->byDateRange('2016-8-15', '2016-08-23')
+//                ->byProject(['app', 'merge'])
+
             ->groupBy(['day', 'project'])
             ->orderBy([
                 'time'    => SORT_ASC,
@@ -43,54 +51,82 @@ class WakaController extends Controller
             ->all();
 
 
-        $projects = array_unique(ArrayHelper::getColumn($models, 'project'));
+        $projects_list = array_unique(ArrayHelper::getColumn($models, 'project'));
 
-        $dates =
-            array_map(function ($value) {
-                return strtotime($value);
-            }, ArrayHelper::getColumn($models, 'day'));
+        $raw_dates = ArrayHelper::getColumn($models, 'day');
 
-        $date_start = min($dates);
-        $date_end = max($dates);
+        $dates_array = DateHelper::getDatesListWithoutSpaces($raw_dates);
+
+        $duration_by_date_by_project = ArrayHelper::map($models, 'day', 'duration', 'project');
+        $duration_by_project_by_date = ArrayHelper::map($models, 'project', 'duration', 'day');
 
 
-        $dates_array = [];
-        $current_date = $date_start;
+        {
+            $projects_array = [];
 
-        while ($current_date <= $date_end) {
-            array_push($dates_array, date('Y-m-d', $current_date));
-            $current_date = strtotime('+1 day', $current_date);
+            $projects_durations = array_map(function ($value) {
+                return array_sum($value);
+            }, $duration_by_date_by_project);
+
+
+            foreach ($projects_list as $project) {
+                $projects_array[$project] = [
+                    'id'    => null,
+                    'name'  => $project,
+                    'total' => $projects_durations[$project],
+                ];
+            }
         }
 
-        $data = ArrayHelper::map($models, 'day', 'duration', 'project');
+        {
+
+            $logged_time_data = [];
+
+            foreach ($dates_array as $day) {
+
+                $array = [
+                    'date'  => $day,
+                    'name'  => Yii::$app->formatter->asDate($day),
+                    'xAxis' => Yii::$app->formatter->asDate($day, 'd-MM'),
+                ];
 
 
-        $result = [];
+                $sum = isset($duration_by_project_by_date[$day]) ? array_sum($duration_by_project_by_date[$day]) : 0;
 
+                $array['formatted'] = DateHelper::formatHoursSpent($sum);
+                $array['total_seconds'] = $sum;
+                $array['value'] = round($sum / 3600, 2);
 
-        $result[0] = ['day'];
-        foreach ($projects as $project) {
-            array_push($result[0], $project);
+                $logged_time_data[] = $array;
+            }
         }
 
-        foreach ($dates_array as $date) {
+        {
+            $time_by_project = [];
 
-            $array = [$date];
+            foreach ($projects_list as $project) {
+                $array = [];
 
+                foreach ($dates_array as $date) {
 
-            foreach ($projects as $project) {
-                $duration = null;
-                if (isset($data[$project][$date])) {
-                    $duration = round(intval($data[$project][$date]) / 3600, 2);
+                    $seconds = isset($duration_by_date_by_project[$project][$date]) ? $duration_by_date_by_project[$project][$date] : 0;
+
+                    array_push($array, [
+                        'date'          => $date,
+                        'formatted'     => DateHelper::formatHoursSpent($seconds),
+                        'name'          => \Yii::$app->formatter->asDate($date),
+                        'project'       => $project,
+                        'total_seconds' => $seconds,
+                        'value'         => round($seconds / 3600, 2),
+                    ]);
                 }
-                array_push($array, $duration);
+
+                $time_by_project[$project] = $array;
             }
 
-            array_push($result, $array);
+
         }
 
-        VarDumper::dump($result);
-
-        return $this->render('chart', compact('result'));
+        return $this->render('chart', compact('projects_list', 'logged_time_data', 'time_by_project', 'projects_array'));
     }
 }

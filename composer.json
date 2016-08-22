@@ -21,7 +21,10 @@
 		"vlucas/phpdotenv": "1.0.*",
 		"codemix/yii2-streamlog": "0.0.1",
 		"mabasic/wakatime-php-api": "dev-master",
-		"schmunk42/yii2-giiant": "@dev"
+		"schmunk42/yii2-giiant": "@dev",
+		"bower-asset/c3": "^0.4.11",
+		"madand/yii2-underscore": "*",
+		"xfg/yii2-mustache.js": "*"
 	},
 	"require-dev": {
 		"yiisoft/yii2-debug": "~2.0.0",

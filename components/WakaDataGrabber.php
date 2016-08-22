@@ -21,10 +21,15 @@ class WakaDataGrabber
 {
     public static function grabLastWeek()
     {
+        return self::grabLastDays(7);
+    }
+
+    public static function grabLastDays($days=1)
+    {
 
         $dates_array = [];
 
-        for ($i = 0; $i < 7; $i++) {
+        for ($i = 0; $i < $days; $i++) {
 
             if ($i == 0) {
                 $date = 'now';

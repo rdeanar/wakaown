@@ -21,9 +21,13 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'js/waka.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        '\madand\underscore\UnderscoreAsset',
+        'xfg\mustachejs\MustachejsAsset',
+        '\app\assets\C3Asset',
     ];
 }

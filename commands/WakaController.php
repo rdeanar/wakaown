@@ -12,7 +12,7 @@ use app\components\WakaDataGrabber;
 
 class WakaController extends \yii\console\Controller
 {
-    public function actionTest()
+    public function actionGrab()
     {
         WakaDataGrabber::grabLastWeek();
     }

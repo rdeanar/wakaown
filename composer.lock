@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fbb3aac2c56b0d43f873008cd573be63",
-    "content-hash": "a835fc9e54d3070ae0ee5d2205bf271a",
+    "hash": "d72329aebaee576b60bc88a5061080c7",
+    "content-hash": "c3b98ab09658d6b88e368dc883d8ada7",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -55,6 +55,74 @@
                 "responsive",
                 "web"
             ]
+        },
+        {
+            "name": "bower-asset/c3",
+            "version": "0.4.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/c3js/c3.git",
+                "reference": "223404a79246c61d150d8a209dbdc81f6955083b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/c3js/c3/zipball/223404a79246c61d150d8a209dbdc81f6955083b",
+                "reference": "223404a79246c61d150d8a209dbdc81f6955083b",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/d3": "~3.5.0"
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "c3.css",
+                    "c3.js"
+                ],
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "node_modules",
+                    "bower_components",
+                    "htdocs",
+                    "spec",
+                    "src",
+                    "package.json",
+                    "component.json",
+                    "Gruntfile.*"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "D3-based reusable chart library",
+            "keywords": [
+                "chart",
+                "d3"
+            ]
+        },
+        {
+            "name": "bower-asset/d3",
+            "version": "v3.5.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mbostock-bower/d3-bower.git",
+                "reference": "7a826d211d5067867debf9ce24a9987e0cb02b6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mbostock-bower/d3-bower/zipball/7a826d211d5067867debf9ce24a9987e0cb02b6e",
+                "reference": "7a826d211d5067867debf9ce24a9987e0cb02b6e",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "d3.js",
+                "bower-asset-ignore": []
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "A JavaScript visualization library for HTML and SVG."
         },
         {
             "name": "bower-asset/jquery",
@@ -159,6 +227,39 @@
             ]
         },
         {
+            "name": "bower-asset/mustache.js",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/janl/mustache.js.git",
+                "reference": "85b940801c3e511a2520b058849001f7a8584948"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/janl/mustache.js/zipball/85b940801c3e511a2520b058849001f7a8584948",
+                "reference": "85b940801c3e511a2520b058849001f7a8584948",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "mustache.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "test"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "Logic-less {{mustache}} templates with JavaScript",
+            "keywords": [
+                "ejs",
+                "mustache",
+                "template",
+                "templates"
+            ]
+        },
+        {
             "name": "bower-asset/punycode",
             "version": "v1.3.2",
             "source": {
@@ -212,6 +313,45 @@
             "extra": {
                 "bower-asset-main": "dist/typeahead.bundle.js"
             }
+        },
+        {
+            "name": "bower-asset/underscore",
+            "version": "1.8.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jashkenas/underscore.git",
+                "reference": "e4743ab712b8ab42ad4ccb48b155034d02394e4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jashkenas/underscore/zipball/e4743ab712b8ab42ad4ccb48b155034d02394e4d",
+                "reference": "e4743ab712b8ab42ad4ccb48b155034d02394e4d",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "underscore.js",
+                "bower-asset-ignore": [
+                    "docs",
+                    "test",
+                    "*.yml",
+                    "CNAME",
+                    "index.html",
+                    "favicon.ico",
+                    "CONTRIBUTING.md",
+                    ".*",
+                    "component.json",
+                    "package.json",
+                    "karma.*"
+                ]
+            },
+            "keywords": [
+                "browser",
+                "client",
+                "functional",
+                "server",
+                "util"
+            ]
         },
         {
             "name": "bower-asset/yii2-pjax",
@@ -837,6 +977,60 @@
                 "source": "https://github.com/rdeanar/wakatime-php-api/tree/master"
             },
             "time": "2016-08-04 22:01:04"
+        },
+        {
+            "name": "madand/yii2-underscore",
+            "version": "1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MadAnd/yii2-underscore.git",
+                "reference": "f7e13e86dba749c005f360dc498956af7c971e65"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MadAnd/yii2-underscore/zipball/f7e13e86dba749c005f360dc498956af7c971e65",
+                "reference": "f7e13e86dba749c005f360dc498956af7c971e65",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/underscore": "1.8.*",
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "asset-installer-paths": {
+                    "npm-asset-library": "vendor/npm",
+                    "bower-asset-library": "vendor/bower"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "madand\\underscore\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "MadAnd",
+                    "email": "dev@madand.net",
+                    "homepage": "https://github.com/MadAnd",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Underscore.js asset for Yii2",
+            "homepage": "https://github.com/MadAnd/yii2-underscore",
+            "keywords": [
+                "underscore",
+                "underscore js",
+                "underscorejs",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2015-04-15 19:33:29"
         },
         {
             "name": "mikehaertl/php-shellcommand",
@@ -1547,6 +1741,48 @@
                 "environment"
             ],
             "time": "2014-10-16 14:50:21"
+        },
+        {
+            "name": "xfg/yii2-mustache.js",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xfg/yii2-mustache.js.git",
+                "reference": "eabc599700d8885f9b4e33b9bce5871c137b94bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xfg/yii2-mustache.js/zipball/eabc599700d8885f9b4e33b9bce5871c137b94bf",
+                "reference": "eabc599700d8885f9b4e33b9bce5871c137b94bf",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/mustache.js": "1.*",
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "xfg\\mustachejs\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "xfg",
+                    "email": "timofey.web@gmail.com"
+                }
+            ],
+            "description": "mustache.js for Yii2",
+            "keywords": [
+                "extension",
+                "mustache.js",
+                "yii2"
+            ],
+            "time": "2015-03-03 12:21:24"
         },
         {
             "name": "yiisoft/yii2",
